@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 
 
 MODEL_PATH              = "../model/image_colorization_model.pt"
+INPUT_IMAGE_PATH	= "../data/input/test.jpeg"
+OUTPUT_IMAGE_PATH	= "../data/output/out.jpg"
 
 def get_model():
     model = ConvNet()
@@ -32,11 +34,9 @@ def process_image(img, img_light):
     img = (cvt2rgb(img) * 255.).astype(np.uint8)
     return img
 
-def main(argv):
-    if len(argv) != 2:
-        print("Usage: python3 color_img.py input-image-path output-image-path")
-
-    inp_imgpath, out_imgpath    = argv[0], argv[1]
+def main():
+   
+    inp_imgpath, out_imgpath    = INPUT_IMAGE_PATH, OUTPUT_IMAGE_PATH
     model                       = get_model()
 
     img_light, img_input, real_size = preprocess_image(inp_imgpath)
@@ -52,5 +52,7 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    main(sys.argv[1:])
+    main()
+
+
 
