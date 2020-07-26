@@ -8,6 +8,7 @@ import random
 import base64
 from flask import Flask, jsonify
 from flask import request
+from flask_cors import CORS
 import torch
 import torchvision
 
@@ -34,11 +35,16 @@ predictor = DefaultPredictor(cfg)
 
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/", methods=['GET', 'POST', 'OPTIONS'])
 def index():
-    request_string = request.json.get('img')
+    req = request.get_json()
+    if type(req) is dict:
+        request_string = req['img']
+    else:
+        return "Invalid Request"
+    # return str(request.get_json())
     key = "base64,"
     index = request_string.find(key)
     if(index != -1):
@@ -73,7 +79,7 @@ def index():
     img.save(buffer, format="PNG")
     img.save("file.png")
     response = base64.b64encode(buffer.getvalue())
-    return jsonify({"res": "data:image/png;base64," + str(response)[2:-1]})
+    return {"res": "data:image/png;base64," + str(response)[2:-1]}
 
 
 if __name__ == "__main__":
