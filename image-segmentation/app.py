@@ -38,7 +38,17 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST', 'OPTIONS'])
 def index():
-    input_image = base64.b64decode(request.json.get('img'))
+    request_string = request.json.get('img')
+    key = "base64,"
+    index = request_string.find(key)
+    if(index != -1):
+        original_mime = request_string[:index+len(key)]
+        req = request_string[index+len(key):]
+    else:
+        original_mime = ""
+        req = request_string
+
+    input_image = base64.b64decode(req)
     im = Image.open(io.BytesIO(input_image))
     im = cv2.cvtColor(np.array(im), cv2.COLOR_RGB2BGR)
     # return request.json.get("img")
@@ -47,6 +57,10 @@ def index():
     classes = outputs["instances"].pred_classes.tolist()
     persons = np.array([np.array(outputs["instances"].pred_masks[x].cpu())
                         for x in range(len(classes)) if classes[x] == 0])
+
+    if(len(persons) == 0):
+        return jsonify({"res": original_mime + req})
+
     persons = persons.sum(axis=0)
     persons = persons.clip(0, 1).reshape(
         persons.shape[0], persons.shape[1], 1).astype("uint8")
@@ -59,7 +73,7 @@ def index():
     img.save(buffer, format="PNG")
     img.save("file.png")
     response = base64.b64encode(buffer.getvalue())
-    return response
+    return jsonify({"res": "data:image/png;base64," + str(response)[2:-1]})
 
 
 if __name__ == "__main__":
