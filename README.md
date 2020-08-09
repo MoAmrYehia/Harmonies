@@ -10,19 +10,35 @@ Harmonies is an online photo editor that aims to simplify the process of editing
 Generally, it will take you around 30 minutes to colorize (add color to) a black and white photo, but as you use Harmonies. You will bring new life to old photos by automatically colorizing them using the capabilities of Computer Vision! 
 
 #### State of the art
-In this part we reimplemented this [paper](https://arxiv.org/abs/1603.08511v5) using PyTorch
+In this part we reimplemented this [paper](https://arxiv.org/abs/1603.08511v5) using PyTorch for images auto colorization
 
-####
+#### Prerequisites
 
+#### Output
+This is a real output using our model
+![gray image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/2.jpg?token=AJUWNRZJ5DWPQGPZHISMHRS7HE6GC)
+![color image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/1.jpg?token=AJUWNR2DEYR7FHLPZEVHS2K7HE6D2)
 
 ### Model 2 (Auto Cropping)
 The pen tool is the most powerful tool in Illustrator and Photoshop. It allows you to define your own anchor points to extract elements from your image. Now you don't need all of this hard work, with Harmonies you can easily extract your image from the background and add it to another photo! 
 
 #### State of the art
-In this part we reimplemented this [paper](https://arxiv.org/abs/1706.05587v3) using PyTorch
+In this part we reimplemented this [paper](https://arxiv.org/abs/1706.05587v3) using PyTorch for auto cropping a person from an image. We used the same concept of image segmentation and instead of adding masks, we return .png photo
+
+#### Prerequisites
+
+#### Output
+This is a real output using our model
+![crooped image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/4.png?token=AJUWNR2Y756BLJO3B66KXHC7HE6MG)
 
 ### Model 3 (Adding Harmonies)
 Copying an element from a photo and pasting it into a painting is a challenging task. Applying photo compositing techniques in this context yields subpar results that look like a collage. We introduce a technique to adjust the parameters of the transfer depending on the painting. For adding Harmonies to the painting and give a sense of uniqueness!.
 
 #### State of the art
-In this part we reimplemented this [paper](https://arxiv.org/abs/1804.03189) using PyTorch
+In this part we reimplemented this [paper](https://arxiv.org/abs/1804.03189) using PyTorch to add harmonies to the adjusted element. 
+
+#### Prerequisites
+
+#### Output
+This is a real output using our model
+![Harmont image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/3.jpg?token=AJUWNR4OS2KCKVQNE4IRDBS7HE6MC)
