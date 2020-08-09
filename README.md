@@ -48,6 +48,28 @@ The pen tool is the most powerful tool in Illustrator and Photoshop. It allows y
 In this part we reimplemented this [paper](https://arxiv.org/abs/1706.05587v3) using PyTorch for auto cropping a person from an image. We used the same concept of image segmentation and instead of adding masks, we return .png photo
 
 #### Prerequisites
+To install all dependencies run:
+```
+cd image-segmentation
+pip install -r requirements.txt
+```
+
+#### Running
+```
+$ python app.py 
+```
+#### Request
+Then send the following JSON request on `localhost:5000` 
+
+```json
+{
+        "img": "adfklk..."
+}
+```
+
+#### Response
+The response text will be the base64 representation of the masked PNG image
+
 
 #### Output
 This is a real output using our model!
