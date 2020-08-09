@@ -15,7 +15,8 @@ In this part we reimplemented this [paper](https://arxiv.org/abs/1603.08511v5) u
 #### Prerequisites
 
 #### Output
-This is a real output using our model
+This is a real output using our model!
+
 ![gray image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/2.jpg?token=AJUWNRZJ5DWPQGPZHISMHRS7HE6GC)
 ![color image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/1.jpg?token=AJUWNR2DEYR7FHLPZEVHS2K7HE6D2)
 
@@ -28,7 +29,8 @@ In this part we reimplemented this [paper](https://arxiv.org/abs/1706.05587v3) u
 #### Prerequisites
 
 #### Output
-This is a real output using our model
+This is a real output using our model!
+
 ![crooped image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/4.png?token=AJUWNR2Y756BLJO3B66KXHC7HE6MG)
 
 ### Model 3 (Adding Harmonies)
@@ -40,5 +42,6 @@ In this part we reimplemented this [paper](https://arxiv.org/abs/1804.03189) usi
 #### Prerequisites
 
 #### Output
-This is a real output using our model
+This is a real output using our model!
+
 ![Harmont image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/3.jpg?token=AJUWNR4OS2KCKVQNE4IRDBS7HE6MC)
