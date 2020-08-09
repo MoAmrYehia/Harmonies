@@ -13,9 +13,27 @@ Generally, it will take you around 30 minutes to colorize (add color to) a black
 In this part we reimplemented this [paper](https://arxiv.org/abs/1603.08511v5) using PyTorch for images auto colorization
 
 #### Prerequisites
-,,,
-requirements.txt
-,,,
+To install all dependencies run:
+```
+cd image colorization
+pip install -r requirements.txt
+```
+#### Running
+```
+$ python app.py 
+```
+
+#### Request
+Then send the following JSON request on `localhost:5000` 
+
+```json
+{
+        "img": "adfklk..."
+}
+```
+
+#### Response
+The response text will be the base64 representation of the masked PNG image
 
 #### Output
 This is a real output using our model!
