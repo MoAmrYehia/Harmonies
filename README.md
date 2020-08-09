@@ -2,7 +2,7 @@
 
 The PyTorch Summer Hackathon is back this year with all new opportunities for the connection with the PyTorch community to build innovative, impactful models, applications and other projects that create positive impact for organizations or people. My team has Created Harmonies with web interfaces powered by PyTorch.  
 
-## PyTorch 2020 Summer Hackathon
+## Harmonies
 
 Harmonies is an online photo editor that aims to simplify the process of editing photos. Now, you can use the same advanced tools from photoshop by drag and drop easily. We take advantage of the capabilities of computer vision to help our users with edit photos in an appropriate way. Our web application is powerd by three different Computer Vision (CV) models. 
 
