@@ -47,6 +47,8 @@ def read_image(b64, size=(256, 256), training=False):
         b64 = b64.decode("utf-8")
     imgdata = base64.b64decode(b64)
     img = skimage.io.imread(imgdata, plugin='imageio')
+    if len(img.shape) > 2 and img.shape[2] > 3:
+        img = img[:, :, :3]
     real_size = img.shape
     if img.shape!=size and not training:
         img     = resize(img, size, anti_aliasing=False)
@@ -92,7 +94,7 @@ model = get_model()
 app = Flask(__name__)
 
 @app.route("/", methods=["POST", "OPTIONS"])
-def index():
+def color():
     res = Response(headers={
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Content-Type, X-Requested-With",
@@ -102,7 +104,7 @@ def index():
     try:
         req = request.get_json()
         if type(req) is dict:
-            inputb64 = req['input']
+            inputb64 = req['img']
         else:
             res.data = "Invalid Request"
             return res
@@ -123,15 +125,15 @@ def index():
         img_result = img_result.resize((real_size[1], real_size[0]))
 
         buffer = io.BytesIO()
-        img_result.save(buffer, format="JPEG")
+        img_result.save(buffer, format="PNG")
         response = base64.b64encode(buffer.getvalue())
         res.mimetype = "application/json"
-        res.data = json.dumps({"res": "data:image/jpg;base64," + str(response)[2:-1]})
+        res.data = json.dumps({"res": "data:image/png;base64," + str(response)[2:-1]})
         return res
-        
     except Exception as e:
-        return str(e)
-        
+        res.data = traceback.format_exc()
+        return res
+       
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

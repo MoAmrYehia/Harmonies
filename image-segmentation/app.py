@@ -1,16 +1,11 @@
 import io
 import numpy as np
 from PIL import Image
-import os
 import json
 import cv2
 import random
 import base64
-from flask import Flask, jsonify
-from flask import request
-from flask_cors import CORS
-import torch
-import torchvision
+from flask import Flask, request, Response
 
 import detectron2
 
@@ -35,51 +30,70 @@ predictor = DefaultPredictor(cfg)
 
 
 app = Flask(__name__)
-CORS(app)
 
-@app.route("/", methods=['GET', 'POST', 'OPTIONS'])
-def index():
-    req = request.get_json()
-    if type(req) is dict:
-        request_string = req['img']
-    else:
-        return "Invalid Request"
-    # return str(request.get_json())
-    key = "base64,"
-    index = request_string.find(key)
-    if(index != -1):
-        original_mime = request_string[:index+len(key)]
-        req = request_string[index+len(key):]
-    else:
-        original_mime = ""
-        req = request_string
+@app.route("/", methods=['POST', 'OPTIONS'])
+def segment():
+    res = Response(headers={
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type, X-Requested-With",
+        "Access-Control-Allow-Methods": "POST, OPTIONS"
+        })
+    try:
+        
+        req = request.get_json()
+        if type(req) is dict:
+            request_string = req['img']
+        else:
+            res.data = "Invalid Request"
+            return res
+        # return str(request.get_json())
+        key = "base64,"
+        index = request_string.find(key)
+        if(index != -1):
+            original_mime = request_string[:index+len(key)]
+            req = request_string[index+len(key):]
+        else:
+            original_mime = ""
+            req = request_string
 
-    input_image = base64.b64decode(req)
-    im = Image.open(io.BytesIO(input_image))
-    im = cv2.cvtColor(np.array(im), cv2.COLOR_RGB2BGR)
-    # return request.json.get("img")
-    outputs = predictor(im)
+        input_image = base64.b64decode(req)
+        im = np.asarray(Image.open(io.BytesIO(input_image)))
+        # return request.json.get("img")
+        if len(im.shape) > 2:
+            if im.shape[2] > 3:
+                im = im[:, :, :3]
+        else:
+            im = np.dstack((im, im, im))
+        print(im.shape)
+        # im, _ = read_image(req)
 
-    classes = outputs["instances"].pred_classes.tolist()
-    persons = np.array([np.array(outputs["instances"].pred_masks[x].cpu())
-                        for x in range(len(classes)) if classes[x] == 0])
+        outputs = predictor(im)
 
-    if(len(persons) == 0):
-        return jsonify({"res": original_mime + req})
+        classes = outputs["instances"].pred_classes.tolist()
+        persons = np.array([np.array(outputs["instances"].pred_masks[x].cpu())
+                            for x in range(len(classes)) if classes[x] == 0])
 
-    persons = persons.sum(axis=0)
-    persons = persons.clip(0, 1).reshape(
-        persons.shape[0], persons.shape[1], 1).astype("uint8")
+        if(len(persons) == 0):
+            res.mimetype = "application/json"
+            res.data = json.dumps({"res": original_mime + req})
+            return res
 
-    img = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
-    img = np.dstack((img, persons*255))
-    img = Image.fromarray(img)
+        persons = persons.sum(axis=0)
+        persons = persons.clip(0, 1).reshape(
+            persons.shape[0], persons.shape[1], 1).astype("uint8")
 
-    buffer = io.BytesIO()
-    img.save(buffer, format="PNG")
-    img.save("file.png")
-    response = base64.b64encode(buffer.getvalue())
-    return {"res": "data:image/png;base64," + str(response)[2:-1]}
+        im = np.dstack((im, persons*255))
+        im = Image.fromarray(im)
+
+        buffer = io.BytesIO()
+        im.save(buffer, format="PNG")
+        response = base64.b64encode(buffer.getvalue())
+        res.mimetype = "application/json"
+        res.data = json.dumps({"res": "data:image/png;base64," + str(response)[2:-1]})
+        return res
+    except Exception as e:
+        res.data = traceback.format_exc()
+        return res
 
 
 if __name__ == "__main__":
