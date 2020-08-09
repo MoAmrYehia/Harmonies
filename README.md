@@ -13,6 +13,9 @@ Generally, it will take you around 30 minutes to colorize (add color to) a black
 In this part we reimplemented this [paper](https://arxiv.org/abs/1603.08511v5) using PyTorch for images auto colorization
 
 #### Prerequisites
+,,,
+requirements.txt
+,,,
 
 #### Output
 This is a real output using our model!
