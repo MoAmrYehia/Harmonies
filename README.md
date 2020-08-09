@@ -33,7 +33,7 @@ Then send the following JSON request on `localhost:5000`
 ```
 
 #### Response
-The response text will be the base64 representation of the masked colorized image
+The response text will be the base64 representation of the masked colorized image.
 
 #### Output
 This is a real output using our model!
@@ -45,7 +45,7 @@ This is a real output using our model!
 The pen tool is the most powerful tool in Illustrator and Photoshop. It allows you to define your own anchor points to extract elements from your image. Now you don't need all of this hard work, with Harmonies you can easily extract your image from the background and add it to another photo! 
 
 #### State of the art
-In this part we reimplemented this [paper](https://arxiv.org/abs/1706.05587v3) using PyTorch for auto cropping a person from an image. We used the same concept of image segmentation and instead of adding masks, we return .png photo
+In this part we reimplemented this [paper](https://arxiv.org/abs/1706.05587v3) using PyTorch for auto-cropping a person from an image. We used the same concept of image segmentation and instead of adding masks, we return a PNG photo.
 
 #### Prerequisites
 To install all dependencies run:
@@ -68,7 +68,7 @@ Then send the following JSON request on `localhost:5000`
 ```
 
 #### Response
-The response text will be the base64 representation of the masked PNG image
+The response text will be the base64 representation of the masked PNG image.
 
 
 #### Output
