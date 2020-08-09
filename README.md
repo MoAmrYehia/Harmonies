@@ -33,7 +33,7 @@ Then send the following JSON request on `localhost:5000`
 ```
 
 #### Response
-The response text will be the base64 representation of the masked PNG image
+The response text will be the base64 representation of the masked colorized image
 
 #### Output
 This is a real output using our model!
