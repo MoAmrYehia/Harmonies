@@ -89,3 +89,4 @@ In this part we reimplemented this [paper](https://arxiv.org/abs/1804.03189) usi
 This is a real output using our model!
 
 ![Harmont image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/3.jpg?token=AJUWNR4OS2KCKVQNE4IRDBS7HE6MC)
+![Harmont image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/6.jpg?token=AJUWNR2LUPM5W4ZVH7SIYEK7HFEAI)
