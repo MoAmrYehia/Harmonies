@@ -277,30 +277,3 @@ save_image(output, 'gen_image.jpg')
 
 # %%
 print(torch.sum(mask_img))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
