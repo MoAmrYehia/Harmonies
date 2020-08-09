@@ -12,14 +12,16 @@ Generally, it will take you around 30 minutes to colorize (add color to) a black
 #### State of the art
 In this part we reimplemented this [paper](https://arxiv.org/abs/1603.08511v5) using PyTorch
 
+####
+
 
 ### Model 2 (Auto Cropping)
 The pen tool is the most powerful tool in Illustrator and Photoshop. It allows you to define your own anchor points to extract elements from your image. Now you don't need all of this hard work, with Harmonies you can easily extract your image from the background and add it to another photo! 
 
 #### State of the art
-In this part we reimplemented this [paper](https://arxiv.org/abs/1905.02244v5) using PyTorch
+In this part we reimplemented this [paper](https://arxiv.org/abs/1706.05587v3) using PyTorch
 
-### Model 1 (Adding Harmonies)
+### Model 3 (Adding Harmonies)
 Copying an element from a photo and pasting it into a painting is a challenging task. Applying photo compositing techniques in this context yields subpar results that look like a collage. We introduce a technique to adjust the parameters of the transfer depending on the painting. For adding Harmonies to the painting and give a sense of uniqueness!.
 
 #### State of the art
