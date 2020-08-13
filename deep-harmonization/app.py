@@ -4,6 +4,10 @@ import time
 import copy
 import traceback
 
+import base64
+import json
+import io
+
 import numpy as np
 from imageio import imread
 from scipy.ndimage.filters import gaussian_filter
@@ -151,7 +155,7 @@ def get_style_model_and_losses(cnn, normalization, style_img, content_img, mask_
     return model, style_losses, content_losses
 
  
-input_img = content_img.clone()
+# input_img = content_img.clone()
 # if you want to use a white noise instead uncomment the below line:
 # input_img = torch.randn(content_img.data.size(), device=device)
 
@@ -160,7 +164,7 @@ input_img = content_img.clone()
 # imshow(input_img, title='Input Image')
 
  
-def run_style_transfer(cnn, normalization, content_img, style_img, input_img, mask_img, num_steps = 3000,
+def run_style_transfer(cnn, normalization, content_img, style_img, input_img, mask_img, num_steps = 500,
                        style_weight = 100, content_weight = 5):
     """Run the style transfer."""
     print('Building the style transfer model..')
@@ -206,12 +210,13 @@ def run_style_transfer(cnn, normalization, content_img, style_img, input_img, ma
 
 def image_loader(input_):
     image_data = base64.b64decode(input_)
-    image = Image.open(io.BytesIO(input_data))
+    image = Image.open(io.BytesIO(image_data))
     # fake batch dimension required to fit network's input dimensions
     image = loader(image).unsqueeze(0)
     return image.cuda()
 
-
+loader = ToTensor()
+unloader = ToPILImage()
 
 @app.route("/", methods=["POST", "OPTIONS"])
 def index():
@@ -248,7 +253,7 @@ def index():
 
         style_img = image_loader(style)
         content_img = image_loader(content)
-        mask_img = imread(b64.b64decode(mask)).astype(np.float32)
+        mask_img = imread(base64.b64decode(mask)).astype(np.float32)
         if mask_img.shape[-1] == 3:
             mask_img = mask_img[..., 0]
         tmask_img = mask_img
@@ -260,7 +265,8 @@ def index():
                             content_img, style_img, input_img, mask_img)
         output = tmask_img * output + (1 - tmask_img) * style_img
 
-        output = Image.fromarray(output)
+        # output = Image.fromarray(output)
+        output = unloader(output[0].cpu())
 
         buffer = io.BytesIO()
         output.save(buffer, format="PNG")
