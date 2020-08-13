@@ -11,7 +11,6 @@ from PIL import Image
 
 # from train import ConvNet
 # from utils import read_image, cvt2Lab, upsample, cvt2rgb
-import matplotlib.pyplot as plt
 
 
 class ConvNet(torch.nn.Module):

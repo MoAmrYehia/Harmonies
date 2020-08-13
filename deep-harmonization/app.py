@@ -1,7 +1,8 @@
-
+from flask import Flask, request, Response
 import sys
 import time
 import copy
+import traceback
 
 import numpy as np
 from imageio import imread
@@ -17,74 +18,10 @@ from torchvision.transforms import ToTensor, ToPILImage, Normalize, Compose
 from torchvision.models import vgg19
 from torchvision.utils import save_image
 
-import pylab as plt
-plt.ion()
-
-from tqdm import tqdm
-tqdm.monitor_interval = 0
-
 from models import gram_matrix, patch_match, downsampling, cosine_similarity
 from data_utils import read_img
 
-
-style_fn = 'data/0_target.jpg'
-naive_fn = 'data/0_naive.jpg'
-mask_fn = 'data/0_c_mask_dilated.jpg'
-tmask_fn = 'data/0_c_mask.jpg'
-
-torch.manual_seed(316)
-torch.cuda.manual_seed_all(316)
-
-
-
-loader = ToTensor()  # transform it into a torch tensor
-
-def image_loader(image_name):
-    image = Image.open(image_name)
-    # fake batch dimension required to fit network's input dimensions
-    image = loader(image).unsqueeze(0)
-    return image.cuda()
-
-def imshow(tensor, title = None):
-    image = tensor.cpu().clone()  # we clone the tensor to not do changes on it
-    image = image.squeeze(0)      # remove the fake batch dimension
-    image = unloader(image)
-    plt.imshow(image)
-    if title is not None:
-        plt.title(title)
-    #plt.pause(0.001) # pause a bit so that plots are updated
-
-unloader = ToPILImage()  # reconvert into PIL image
-#transform = Normalizetransform(mean = [0.485, 0.456, 0.406], std = [0.229, 0.224, 0.225])
-
-
-style_img = image_loader(style_fn)
-content_img = image_loader(naive_fn)
-mask_img = imread(mask_fn).astype(np.float32)
-tmask_img = imread(tmask_fn).astype(np.float32)
-if mask_img.shape[-1] == 3:
-    mask_img = mask_img[..., 0]
-if tmask_img.shape[-1] == 3:
-    tmask_img = tmask_img[..., 0]
-tmask_img = gaussian_filter(tmask_img, sigma = 3)
-tmask_img = torch.from_numpy(tmask_img).unsqueeze(0).cuda() / 255.0
-mask_img = torch.from_numpy(mask_img).unsqueeze(0).cuda() / 255.0
-
-print(style_img.shape)
-print(content_img.shape)
-print(mask_img.shape)
-print(tmask_img.shape)
-
-#content_img_original = content_img.clone()
-#content_img = content_img.requires_grad_(True)
-
-plt.figure(figsize = (16, 8))
-plt.subplot(121)
-imshow(style_img, title='Style Image')
-
-plt.subplot(122)
-imshow(content_img, title='Content Image')
-
+app = Flask(__name__)
 
 class ContentLoss(nn.Module):
 
@@ -266,41 +203,75 @@ def run_style_transfer(cnn, normalization, content_img, style_img, input_img, ma
 
     return input_img
 
- 
-output = run_style_transfer(cnn, Normalization(normalization_mean, normalization_std),
+
+def image_loader(input_):
+    image_data = base64.b64decode(input_)
+    image = Image.open(io.BytesIO(input_data))
+    # fake batch dimension required to fit network's input dimensions
+    image = loader(image).unsqueeze(0)
+    return image.cuda()
+
+
+
+@app.route("/", methods=["POST", "OPTIONS"])
+def index():
+    res = Response(headers={
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type, X-Requested-With",
+        "Access-Control-Allow-Methods": "POST, OPTIONS"
+    })
+
+    try:
+        req = request.get_json()
+        if type(req) is dict:
+            style = req['style']
+            content = req['content']
+            mask = req['mask']
+        else:
+            res.data = "Invalid Request"
+            return res
+        
+        key = "base64,"
+
+        index = style.find(key)
+        if(index != -1):
+            style = style[index+len(key):]
+
+        index = content.find(key)
+        if(index != -1):
+            content = content[index+len(key):]
+
+        index = mask.find(key)
+        if(index != -1):
+            mask = mask[index+len(key):]
+
+
+        style_img = image_loader(style)
+        content_img = image_loader(content)
+        mask_img = imread(b64.b64decode(mask)).astype(np.float32)
+        if mask_img.shape[-1] == 3:
+            mask_img = mask_img[..., 0]
+        tmask_img = mask_img
+        tmask_img = gaussian_filter(tmask_img, sigma = 3)
+        tmask_img = torch.from_numpy(tmask_img).unsqueeze(0).cuda() / 255.0
+        mask_img = torch.from_numpy(mask_img).unsqueeze(0).cuda() / 255.0
+        input_img = content_img.clone()
+        output = run_style_transfer(cnn, Normalization(normalization_mean, normalization_std),
                             content_img, style_img, input_img, mask_img)
+        output = tmask_img * output + (1 - tmask_img) * style_img
 
-output = tmask_img * output + (1 - tmask_img) * style_img
-plt.figure(figsize = (8, 8))
-imshow(output)
-save_image(output, 'gen_image.jpg')
+        output = Image.fromarray(output)
 
+        buffer = io.BytesIO()
+        output.save(buffer, format="PNG")
+        response = base64.b64encode(buffer.getvalue())
+        res.mimetype = "application/json"
+        res.data = json.dumps({"res": "data:image/png;base64," + str(response)[2:-1]})
+        return res
+    except Exception as e:
+        res.data = traceback.format_exc()
+        return res
+        
 
-print(torch.sum(mask_img))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)
