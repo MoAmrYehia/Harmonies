@@ -28,7 +28,7 @@ Then send the following JSON request on `localhost:5000`
 
 ```json
 {
-        "img": "adfklk..."
+        "img": "data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQ..."
 }
 ```
 
@@ -63,7 +63,7 @@ Then send the following JSON request on `localhost:5000`
 
 ```json
 {
-        "img": "adfklk..."
+        "img": "data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQ..."
 }
 ```
 
