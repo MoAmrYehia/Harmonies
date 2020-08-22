@@ -210,7 +210,7 @@ def run_style_transfer(cnn, normalization, content_img, style_img, input_img, ma
 
 def image_loader(input_):
     image_data = base64.b64decode(input_)
-    image = Image.open(io.BytesIO(image_data))
+    image = Image.open(io.BytesIO(image_data)).convert("RGB")
     # fake batch dimension required to fit network's input dimensions
     image = loader(image).unsqueeze(0)
     return image.cuda()
