@@ -47,6 +47,19 @@ The pen tool is the most powerful tool in Illustrator and Photoshop. It allows y
 #### State of the art
 In this part we reimplemented this [paper](https://arxiv.org/abs/1706.05587v3) using PyTorch for auto-cropping a person from an image. We used the same concept of image segmentation and instead of adding masks, we return a PNG photo.
 
+#### Implementation details
+[detectron2](https://detectron2.readthedocs.io/) is a pytorch based, easy to use library for image segmentation.  
+
+By feeding an image to detectron2 it produces a bunch of useful outputs, we are interested in two of them.
+`output['instances'].pred_classes` and `output['instances'].pred_masks`.  
+The first is an array of class labels telling us which object is being segmented (class 0 => person).  
+The second is an array of bit masks that segment the respective objects in `pred_classes`.  
+By choosing the bit masks corresponding to persons (class 0), converting them to `uint8`, summing them over the last axis, capping the values between 0 and 1 and multiplying the matrix by 255, we get the alpha layer of the output image.  
+Then we just stack this layer with the input RGB image and we get a png image where only people are visible.
+
+> **NOTE**  
+> If you're running on a GPU, then the line `cfg.MODEL.DEVICE = 'cpu'` should be removed to reduce latency, however, if, like us, you are going to deploy this app to azure app service, this line is important.
+
 #### Prerequisites
 To install all dependencies run:
 ```
@@ -74,8 +87,8 @@ The response text will be the base64 representation of the masked PNG image.
 #### Output
 This is a real output using our model!
 
-![crooped image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/4.png?token=AJUWNR2Y756BLJO3B66KXHC7HE6MG)
-![crooped image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/5.png?token=AJUWNR4KGUEAXHTETU2QHDK7HE75W)
+![croped image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/4.png?token=AJUWNR2Y756BLJO3B66KXHC7HE6MG)
+![croped image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/5.png?token=AJUWNR4KGUEAXHTETU2QHDK7HE75W)
 
 ### Model 3 (Adding Harmonies)
 Copying an element from a photo and pasting it into a painting is a challenging task. Applying photo compositing techniques in this context yields subpar results that look like a collage. We introduce a technique to adjust the parameters of the transfer depending on the painting. For adding Harmonies to the painting and give a sense of uniqueness!.
