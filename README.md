@@ -122,7 +122,4 @@ This is a real output using our model!
     <img src="https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/3.jpg"
         width = "250" 
         height= "250">
-    <img src="https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/6.jpg"
-        width = "250" 
-        height= "250">
 </p>
