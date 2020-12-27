@@ -42,8 +42,8 @@ The response text will be the base64 representation of the masked colorized imag
 #### Output
 This is a real output using our model!
 
-![gray image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/2.jpg?token=AJUWNRZJ5DWPQGPZHISMHRS7HE6GC)
-![color image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/1.jpg?token=AJUWNR2DEYR7FHLPZEVHS2K7HE6D2)
+![gray image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/2.jpg?token=AJUWNRZJ5DWPQGPZHISMHRS7HE6GC = 250x250)
+![color image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/1.jpg?token=AJUWNR2DEYR7FHLPZEVHS2K7HE6D2 = 250x250)
 
 ### Model 2 (Auto Cropping)
 The pen tool is the most powerful tool in Illustrator and Photoshop. It allows you to define your own anchor points to extract elements from your image. Now you don't need all of this hard work, with Harmonies you can easily extract your image from the background and add it to another photo! 
@@ -91,8 +91,8 @@ The response text will be the base64 representation of the masked PNG image.
 #### Output
 This is a real output using our model!
 
-![croped image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/4.png?token=AJUWNR2Y756BLJO3B66KXHC7HE6MG)
-![croped image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/5.png?token=AJUWNR4KGUEAXHTETU2QHDK7HE75W)
+![croped image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/4.png?token=AJUWNR2Y756BLJO3B66KXHC7HE6MG = 250x250)
+![croped image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/5.png?token=AJUWNR4KGUEAXHTETU2QHDK7HE75W = 250x250)
 
 ### Model 3 (Adding Harmonies)
 Copying an element from a photo and pasting it into a painting is a challenging task. Applying photo compositing techniques in this context yields subpar results that look like a collage. We introduce a technique to adjust the parameters of the transfer depending on the painting. For adding Harmonies to the painting and give a sense of uniqueness!.
@@ -105,5 +105,5 @@ In this part we reimplemented this [paper](https://arxiv.org/abs/1804.03189) usi
 #### Output
 This is a real output using our model!
 
-![Harmont image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/3.jpg?token=AJUWNR4OS2KCKVQNE4IRDBS7HE6MC)
-![Harmont image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/6.jpg?token=AJUWNR2LUPM5W4ZVH7SIYEK7HFEAI)
+![Harmont image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/3.jpg?token=AJUWNR4OS2KCKVQNE4IRDBS7HE6MC = 250x250)
+![Harmont image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/6.jpg?token=AJUWNR2LUPM5W4ZVH7SIYEK7HFEAI = 250x250)
