@@ -42,8 +42,15 @@ The response text will be the base64 representation of the masked colorized imag
 #### Output
 This is a real output using our model!
 
-![gray image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/2.jpg?token=AJUWNRZJ5DWPQGPZHISMHRS7HE6GC = 250x250)
-![color image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/1.jpg?token=AJUWNR2DEYR7FHLPZEVHS2K7HE6D2 = 250x250)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/2.jpg?token=AJUWNRZJ5DWPQGPZHISMHRS7HE6GC"
+        width = "150" 
+        height= "150">
+    <img src="https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/1.jpg?token=AJUWNR2DEYR7FHLPZEVHS2K7HE6D2"
+        width = "150" 
+        height= "150">
+</p>
+
 
 ### Model 2 (Auto Cropping)
 The pen tool is the most powerful tool in Illustrator and Photoshop. It allows you to define your own anchor points to extract elements from your image. Now you don't need all of this hard work, with Harmonies you can easily extract your image from the background and add it to another photo! 
