@@ -105,5 +105,5 @@ In this part we reimplemented this [paper](https://arxiv.org/abs/1804.03189) usi
 #### Output
 This is a real output using our model!
 
-![Harmont image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/3.jpg?token=AJUWNR4OS2KCKVQNE4IRDBS7HE6MC = 250x250)
-![Harmont image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/6.jpg?token=AJUWNR2LUPM5W4ZVH7SIYEK7HFEAI = 250x250)
+![Harmont image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/3.jpg = 250x250)
+![Harmont image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/6.jpg = 250x250)
