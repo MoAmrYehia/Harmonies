@@ -91,8 +91,8 @@ The response text will be the base64 representation of the masked PNG image.
 #### Output
 This is a real output using our model!
 
-![croped image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/4.png?token=AJUWNR2Y756BLJO3B66KXHC7HE6MG = 250x250)
-![croped image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/5.png?token=AJUWNR4KGUEAXHTETU2QHDK7HE75W = 250x250)
+![croped image](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/4.png =250x250)
+![croped image2](https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/5.png =250x250)
 
 ### Model 3 (Adding Harmonies)
 Copying an element from a photo and pasting it into a painting is a challenging task. Applying photo compositing techniques in this context yields subpar results that look like a collage. We introduce a technique to adjust the parameters of the transfer depending on the painting. For adding Harmonies to the painting and give a sense of uniqueness!.
