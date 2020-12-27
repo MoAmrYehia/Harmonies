@@ -8,13 +8,13 @@ Harmonies is an online photo editor that aims to simplify the process of editing
 
 ---
 
-### Model 1 (Auto Colorization)
+## Image Colorization
 Generally, it will take you around 30 minutes to colorize (add color to) a black and white photo, but as you use Harmonies. You will bring new life to old photos by automatically colorizing them using the capabilities of Computer Vision! 
 
-#### State of the art
+### State of the art
 In this part we reimplemented this [paper](https://arxiv.org/abs/1603.08511v5) using PyTorch for images auto colorization
 
-#### Prerequisites
+### Prerequisites
 To install all dependencies run:
 ```
 cd image colorization
@@ -49,8 +49,9 @@ This is a real output using our model!
         height= "250">
 </p>
 
+---
 
-### Model 2 (Auto Cropping)
+## Image Segmentation
 The pen tool is the most powerful tool in Illustrator and Photoshop. It allows you to define your own anchor points to extract elements from your image. Now you don't need all of this hard work, with Harmonies you can easily extract your image from the background and add it to another photo! 
 
 #### State of the art
@@ -105,7 +106,9 @@ This is a real output using our model!
         height= "250">
 </p>
 
-### Model 3 (Adding Harmonies)
+---
+
+## Deep Painterly Harmonization
 Copying an element from a photo and pasting it into a painting is a challenging task. Applying photo compositing techniques in this context yields subpar results that look like a collage. We introduce a technique to adjust the parameters of the transfer depending on the painting. For adding Harmonies to the painting and give a sense of uniqueness!.
 
 #### State of the art
