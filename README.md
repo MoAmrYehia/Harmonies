@@ -1,14 +1,12 @@
-# PyTorch 2020 Summer Hackathon
+# Harmonies
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/MoAmrYehia/Harmonies/master/res/Harmonies_Logo.jpeg">
 </p>
 
-The PyTorch Summer Hackathon is back this year with all new opportunities for the connection with the PyTorch community to build innovative, impactful models, applications and other projects that create positive impact for organizations or people. My team has Created Harmonies with web interfaces powered by PyTorch.  
+Harmonies is an online photo editor that aims to simplify the process of editing photos. Now, you can use the same advanced tools from photoshop by drag and drop easily. We take advantage of the capabilities of computer vision to help our users with edit photos in an appropriate way. Our web application is powerd by three different Computer Vision (CV) models. We submitted Harmonies to the [PyTorch Summer Hackathon 2020](https://devpost.com/software/pi-ke4nfz).
 
-## Harmonies
-
-Harmonies is an online photo editor that aims to simplify the process of editing photos. Now, you can use the same advanced tools from photoshop by drag and drop easily. We take advantage of the capabilities of computer vision to help our users with edit photos in an appropriate way. Our web application is powerd by three different Computer Vision (CV) models. 
+---
 
 ### Model 1 (Auto Colorization)
 Generally, it will take you around 30 minutes to colorize (add color to) a black and white photo, but as you use Harmonies. You will bring new life to old photos by automatically colorizing them using the capabilities of Computer Vision! 
