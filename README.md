@@ -1,5 +1,9 @@
 # PyTorch 2020 Summer Hackathon
 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/MoAmrYehia/Harmonies/master/res/Harmonies_Logo.jpeg">
+</p>
+
 The PyTorch Summer Hackathon is back this year with all new opportunities for the connection with the PyTorch community to build innovative, impactful models, applications and other projects that create positive impact for organizations or people. My team has Created Harmonies with web interfaces powered by PyTorch.  
 
 ## Harmonies
