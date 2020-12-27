@@ -44,11 +44,11 @@ This is a real output using our model!
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/2.jpg?token=AJUWNRZJ5DWPQGPZHISMHRS7HE6GC"
-        width = "150" 
-        height= "150">
+        width = "250" 
+        height= "250">
     <img src="https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/1.jpg?token=AJUWNR2DEYR7FHLPZEVHS2K7HE6D2"
-        width = "150" 
-        height= "150">
+        width = "250" 
+        height= "250">
 </p>
 
 
