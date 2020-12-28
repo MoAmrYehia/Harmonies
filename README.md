@@ -21,13 +21,14 @@ To install all dependencies run:
 cd image colorization
 pip install -r requirements.txt
 ```
-#### Running
+### Running
 
 ```python
+cd image colorization
 python app.py 
 ```
 
-#### Request
+### Request
 > Then send the following JSON request on `localhost:5000` 
 
 ```json
@@ -47,6 +48,10 @@ python app.py
         width = "250" 
         height= "250">
 </p>
+
+### Pre-Trained Model 
+
+> image_colorization_model.pt 
 
 ---
 
