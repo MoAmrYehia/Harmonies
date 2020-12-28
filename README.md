@@ -24,7 +24,7 @@ pip install -r requirements.txt
 #### Running
 
 ```python
-$ python app.py 
+python app.py 
 ```
 
 #### Request
@@ -80,8 +80,9 @@ pip install -r requirements.txt
 ```
 
 #### Running
-```
-$ python app.py 
+
+```python
+python app.py 
 ```
 #### Request
 Then send the following JSON request on `localhost:5000` 
