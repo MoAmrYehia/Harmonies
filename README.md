@@ -58,10 +58,10 @@ python app.py
 ## Image Segmentation
 The pen tool is the most powerful tool in Illustrator and Photoshop. It allows you to define your own anchor points to extract elements from your image. Now you don't need all of this hard work, with Harmonies you can easily extract your image from the background and add it to another photo! 
 
-#### State of the art
-In this part we reimplemented this [paper](https://arxiv.org/abs/1706.05587v3) using PyTorch for auto-cropping a person from an image. We used the same concept of image segmentation and instead of adding masks, we return a PNG photo.
+### State of the art
+In this part we reimplemented the [Rethinking Atrous Convolution for Semantic Image Segmentation](https://arxiv.org/abs/1706.05587v3) paper using PyTorch for auto-cropping a person from an image. By applying the same concept of image segmentation and instead of adding masks, we return a PNG photo.
 
-#### Implementation details
+### Implementation details
 [detectron2](https://detectron2.readthedocs.io/) is a pytorch based, easy to use library for image segmentation.  
 
 By feeding an image to detectron2 it produces a bunch of useful outputs, we are interested in two of them.
@@ -74,29 +74,29 @@ Then we just stack this layer with the input RGB image and we get a png image wh
 > **NOTE**  
 > If you're running on a GPU, then the line `cfg.MODEL.DEVICE = 'cpu'` should be removed to reduce latency, however, if, like us, you are going to deploy this app to azure app service, this line is important.
 
-#### Prerequisites
+### Prerequisites
 To install all dependencies run:
-```
+
+```Shell
 cd image-segmentation
 pip install -r requirements.txt
 ```
 
-#### Running
+### Running
 
 ```python
 python app.py 
 ```
-#### Request
-Then send the following JSON request on `localhost:5000` 
+
+### Request
+> Then send the following JSON request on `localhost:5000` 
 
 ```json
 {
         "img": "data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQ..."
 }
 ```
-
-#### Response
-The response text will be the base64 representation of the masked PNG image.
+> The response text will be the base64 representation of the masked PNG image.
 
 
 #### Output
