@@ -85,6 +85,7 @@ pip install -r requirements.txt
 ### Running
 
 ```python
+cd image-segmentation
 python app.py 
 ```
 
