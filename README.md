@@ -28,19 +28,16 @@ python app.py
 ```
 
 #### Request
-Then send the following JSON request on `localhost:5000` 
+> Then send the following JSON request on `localhost:5000` 
 
 ```json
 {
         "img": "data:image/jpeg;base64,/9j/2wCEAAgGBgcGBQ..."
 }
 ```
+> The response text will be the base64 representation of the masked colorized image.
 
-#### Response
-The response text will be the base64 representation of the masked colorized image.
-
-#### Output
-This is a real output using our model!
+### Output
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/2.jpg?token=AJUWNRZJ5DWPQGPZHISMHRS7HE6GC"
