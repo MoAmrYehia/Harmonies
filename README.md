@@ -12,16 +12,18 @@ Harmonies is an online photo editor that aims to simplify the process of editing
 Generally, it will take you around 30 minutes to colorize (add color to) a black and white photo, but as you use Harmonies. You will bring new life to old photos by automatically colorizing them using the capabilities of Computer Vision! 
 
 ### State of the art
-In this part we reimplemented this [paper](https://arxiv.org/abs/1603.08511v5) using PyTorch for images auto colorization
+In this part we reimplemented the [Colorful Image Colorization](https://arxiv.org/abs/1603.08511v5) paper using PyTorch for images auto colorization
 
 ### Prerequisites
 To install all dependencies run:
-```
+
+```Shell
 cd image colorization
 pip install -r requirements.txt
 ```
 #### Running
-```
+
+```python
 $ python app.py 
 ```
 
