@@ -100,7 +100,6 @@ python app.py
 
 
 #### Output
-This is a real output using our model!
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/4.png"
@@ -116,13 +115,10 @@ This is a real output using our model!
 ## Deep Painterly Harmonization
 Copying an element from a photo and pasting it into a painting is a challenging task. Applying photo compositing techniques in this context yields subpar results that look like a collage. We introduce a technique to adjust the parameters of the transfer depending on the painting. For adding Harmonies to the painting and give a sense of uniqueness!.
 
-#### State of the art
-In this part we reimplemented this [paper](https://arxiv.org/abs/1804.03189) using PyTorch to add harmonies to the adjusted element. 
+### State of the art
+In this part we reimplemented فاث [Deep Painterly Harmonization](https://arxiv.org/abs/1804.03189) paper using PyTorch to add harmonies to the adjusted element. 
 
-#### Prerequisites
-
-#### Output
-This is a real output using our model!
+### Output
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/MoAmrYehia/pytorch-hackathon/master/res/3.jpg"
