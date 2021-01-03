@@ -4,7 +4,7 @@
     <img src="https://raw.githubusercontent.com/MoAmrYehia/Harmonies/master/res/Harmonies_Logo.jpeg">
 </p>
 
-Harmonies is an online photo editor that aims to simplify the process of editing photos. Now, you can use the same advanced tools from photoshop by drag and drop easily. We take advantage of the capabilities of computer vision to help our users with edit photos in an appropriate way. Our web application is powerd by three different Computer Vision (CV) models. We submitted Harmonies to the [PyTorch Summer Hackathon 2020](https://devpost.com/software/pi-ke4nfz)
+Harmonies is an online photo editor that aims to simplify the process of editing photos. Now, you can use the same advanced tools from photoshop by drag and drop easily. We take advantage of the capabilities of computer vision to help our users with edit photos in an appropriate way. Our web application is powerd by three different Computer Vision (CV) models. We submitted Harmonies to the [PyTorch Summer Hackathon 2020](https://devpost.com/software/pi-ke4nfz).
 
 ---
 
