@@ -23,6 +23,6 @@ six==1.15.0
 --find-links https://download.pytorch.org/whl/torch_stable.html
 torch==1.5.1+cpu
 torchvision==0.6.0+cpu
-Werkzeug==1.0.1
+Werkzeug==2.2.3
 --find-links https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.5/index.html
 detectron2==0.2
