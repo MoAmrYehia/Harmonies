@@ -1,5 +1,5 @@
 setuptools>=41.0.0
-Flask==1.1.1
+Flask==2.3.2
 gunicorn==20.0.4
 numpy==1.16.4
 Pillow==8.1.1
